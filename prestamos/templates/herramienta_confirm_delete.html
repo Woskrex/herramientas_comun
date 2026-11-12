@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Eliminar herramienta</h2>
+
+<p>¿Estás seguro de eliminar {{ herramienta.nombre }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+
+<a href="{% url 'herramienta_lista' %}">Cancelar</a>
+{% endblock %}

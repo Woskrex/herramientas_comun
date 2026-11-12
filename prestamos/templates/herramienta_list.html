@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Listado de herramientas</h2>
+<a href="{% url 'herramienta_crear' %}">Nueva herramienta</a>
+
+<form method="get">
+    <input type="text" name="buscar" placeholder="Buscar por nombre">
+
+    <select name="categoria">
+        <option value="">Todas las categorías</option>
+        {% for categoria in categorias %}
+            <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Buscar</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+        <th>Disponible</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for herramienta in herramientas %}
+    <tr>
+        <td>{{ herramienta.codigo }}</td>
+        <td>{{ herramienta.nombre }}</td>
+        <td>{{ herramienta.categoria.nombre }}</td>
+        <td>{{ herramienta.estado }}</td>
+        <td>{{ herramienta.disponible }}</td>
+        <td><a href="{% url 'herramienta_detalle' herramienta.id %}">Ver</a>
+            <a href="{% url 'herramienta_editar' herramienta.id %}">Editar</a>
+            <a href="{% url 'herramienta_eliminar' herramienta.id %}">Eliminar</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

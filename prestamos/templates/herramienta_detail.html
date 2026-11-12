@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Detalle de herramienta</h2>
+
+<p><strong>Código:</strong> {{ herramienta.codigo }}</p>
+<p><strong>Nombre:</strong> {{ herramienta.nombre }}</p>
+<p><strong>Categoría:</strong> {{ herramienta.categoria.nombre }}</p>
+<p><strong>Estado:</strong> {{ herramienta.estado }}</p>
+<p><strong>Disponible:</strong> {{ herramienta.disponible }}</p>
+<p><strong>Fecha de ingreso:</strong> {{ herramienta.fecha_ingreso }}</p>
+
+<a href="{% url 'herramienta_editar' herramienta.id %}">Editar</a>
+<a href="{% url 'herramienta_lista' %}">Volver</a>
+{% endblock %}

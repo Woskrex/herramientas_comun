@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Listado de categorías</h2>
+
+<a href="{% url 'categoria_crear' %}">Nueva categoría</a>
+
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for categoria in categorias %}
+    <tr>
+        <td>{{ categoria.nombre }}</td>
+        <td>{{ categoria.descripcion }}</td>
+        <td>
+            <a href="{% url 'categoria_editar' categoria.id %}">Editar</a>
+            <a href="{% url 'categoria_eliminar' categoria.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

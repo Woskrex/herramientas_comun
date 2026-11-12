@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Formulario de herramienta</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+<a href="{% url 'herramienta_lista' %}">Volver al listado</a>
+{% endblock %}

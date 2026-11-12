@@ -9,6 +9,10 @@
         <h1>Herramientas en Común</h1>
     <nav>
         <a href="{% url 'inicio' %}">Inicio</a>
+        {% if user.is_staff %}
+    <a href="{% url 'herramienta_lista' %}">Herramientas</a>
+    <a href="{% url 'categoria_lista' %}">Categorías</a>
+{% endif %}
 
         {% if user.is_authenticated %}
             <span>Usuario: {{ user.username }}</span>
@@ -21,6 +25,11 @@
             <a href="{% url 'login' %}">Iniciar sesión</a>
         {% endif %}
     </nav>
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
     </header>
 
     <main>
