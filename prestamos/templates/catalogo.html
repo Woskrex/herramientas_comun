@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Catálogo de herramientas disponibles</h2>
+
+{% for herramienta in herramientas %}
+    <div>
+        <p>
+            {{ herramienta.codigo }} -
+            {{ herramienta.nombre }}
+        </p>
+
+        <form method="post" action="{% url 'agregar_solicitud' herramienta.id %}">
+            {% csrf_token %}
+            <button type="submit">Agregar a solicitud</button>
+        </form>
+    </div>
+{% empty %}
+    <p>No hay herramientas disponibles.</p>
+{% endfor %}
+
+{% endblock %}

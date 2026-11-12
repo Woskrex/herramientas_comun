@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Mi solicitud de herramientas</h2>
+
+{% for herramienta in herramientas %}
+    <p>{{ herramienta.codigo }} - {{ herramienta.nombre }}</p>
+
+    <form method="post" action="{% url 'quitar_solicitud' herramienta.id %}">
+        {% csrf_token %}
+        <button type="submit">Quitar</button>
+    </form>
+{% empty %}
+    <p>Tu solicitud está vacía.</p>
+{% endfor %}
+
+{% if herramientas %}
+    <form method="post" action="{% url 'confirmar_solicitud' %}">
+        {% csrf_token %}
+        <button type="submit">Confirmar solicitud</button>
+    </form>
+{% endif %}
+
+<a href="{% url 'catalogo' %}">Volver al catálogo</a>
+{% endblock %}
