@@ -1,0 +1,24 @@
+
+[
+  {"model": "prestamos.categoria", "pk": 1, "fields": {"nombre": "Construcción", "descripcion": "Herramientas para construcción y reparaciones"}},
+  {"model": "prestamos.categoria", "pk": 2, "fields": {"nombre": "Jardinería", "descripcion": "Herramientas para jardines y áreas verdes"}},
+  {"model": "prestamos.categoria", "pk": 3, "fields": {"nombre": "Electricidad", "descripcion": "Herramientas para trabajos eléctricos"}},
+
+  {"model": "prestamos.herramienta", "pk": 1, "fields": {"codigo": "HER-001", "nombre": "Martillo", "categoria": 1, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-01-10"}},
+  {"model": "prestamos.herramienta", "pk": 2, "fields": {"codigo": "HER-002", "nombre": "Taladro", "categoria": 1, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-01-12"}},
+  {"model": "prestamos.herramienta", "pk": 3, "fields": {"codigo": "HER-003", "nombre": "Serrucho", "categoria": 1, "estado": "Regular", "disponible": true, "fecha_ingreso": "2026-02-05"}},
+  {"model": "prestamos.herramienta", "pk": 4, "fields": {"codigo": "HER-004", "nombre": "Llave inglesa", "categoria": 1, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-02-10"}},
+  {"model": "prestamos.herramienta", "pk": 5, "fields": {"codigo": "HER-005", "nombre": "Nivel", "categoria": 1, "estado": "En reparación", "disponible": false, "fecha_ingreso": "2026-03-01"}},
+
+  {"model": "prestamos.herramienta", "pk": 6, "fields": {"codigo": "HER-006", "nombre": "Pala", "categoria": 2, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-03-05"}},
+  {"model": "prestamos.herramienta", "pk": 7, "fields": {"codigo": "HER-007", "nombre": "Rastrillo", "categoria": 2, "estado": "Regular", "disponible": true, "fecha_ingreso": "2026-03-10"}},
+  {"model": "prestamos.herramienta", "pk": 8, "fields": {"codigo": "HER-008", "nombre": "Tijeras de podar", "categoria": 2, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-04-01"}},
+  {"model": "prestamos.herramienta", "pk": 9, "fields": {"codigo": "HER-009", "nombre": "Regadera", "categoria": 2, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-04-05"}},
+  {"model": "prestamos.herramienta", "pk": 10, "fields": {"codigo": "HER-010", "nombre": "Carretilla", "categoria": 2, "estado": "Regular", "disponible": true, "fecha_ingreso": "2026-04-10"}},
+
+  {"model": "prestamos.herramienta", "pk": 11, "fields": {"codigo": "HER-011", "nombre": "Multímetro", "categoria": 3, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-05-01"}},
+  {"model": "prestamos.herramienta", "pk": 12, "fields": {"codigo": "HER-012", "nombre": "Alicate", "categoria": 3, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-05-05"}},
+  {"model": "prestamos.herramienta", "pk": 13, "fields": {"codigo": "HER-013", "nombre": "Pelacables", "categoria": 3, "estado": "Regular", "disponible": true, "fecha_ingreso": "2026-05-10"}},
+  {"model": "prestamos.herramienta", "pk": 14, "fields": {"codigo": "HER-014", "nombre": "Buscapolos", "categoria": 3, "estado": "Bueno", "disponible": true, "fecha_ingreso": "2026-06-01"}},
+  {"model": "prestamos.herramienta", "pk": 15, "fields": {"codigo": "HER-015", "nombre": "Pinza amperimétrica", "categoria": 3, "estado": "En reparación", "disponible": false, "fecha_ingreso": "2026-06-05"}}
+]
