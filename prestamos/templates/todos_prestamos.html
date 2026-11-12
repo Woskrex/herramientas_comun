@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h2>Gestión de préstamos</h2>
+
+<table border="1">
+    <tr>
+        <th>Socio</th>
+        <th>Herramienta</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for prestamo in prestamos %}
+    <tr>
+        <td>{{ prestamo.socio.username }}</td>
+        <td>{{ prestamo.herramienta.nombre }}</td>
+        <td>{{ prestamo.estado }}</td>
+        <td>
+            {% if prestamo.estado == 'Pendiente' %}
+                <form method="post" action="{% url 'activar_prestamo' prestamo.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Activar</button>
+                </form>
+            {% elif prestamo.estado == 'Activo' %}
+                <form method="post" action="{% url 'devolver_prestamo' prestamo.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Registrar devolución</button>
+                </form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

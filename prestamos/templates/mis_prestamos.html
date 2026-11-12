@@ -10,6 +10,8 @@
         <th>Estado</th>
         <th>Fecha de solicitud</th>
         <th>Devolución esperada</th>
+        <th>Acciones</th>
+
     </tr>
 
     {% for prestamo in prestamos %}
@@ -18,10 +20,17 @@
         <td>{{ prestamo.estado }}</td>
         <td>{{ prestamo.fecha_solicitud }}</td>
         <td>{{ prestamo.fecha_devolucion_esperada }}</td>
+        <td> {% if prestamo.estado == 'Pendiente' %}
+        <form method="post" action="{% url 'cancelar_prestamo' prestamo.id %}">
+            {% csrf_token %}
+            <button type="submit">Cancelar préstamo</button>
+        </form>
+    {% endif %}
+        </td>
     </tr>
     {% empty %}
     <tr>
-        <td colspan="4">No tienes préstamos registrados.</td>
+        <td colspan="5">No tienes préstamos registrados.</td>
     </tr>
     {% endfor %}
 </table>

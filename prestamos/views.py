@@ -287,3 +287,62 @@ def mis_prestamos(request):
     return render(request, 'mis_prestamos.html', {
         'prestamos': prestamos
     })
+
+
+@login_required
+@require_POST
+def cancelar_prestamo(request, id):
+    prestamo = get_object_or_404(
+        Prestamo,
+        id=id,
+        socio=request.user,
+        estado='Pendiente'
+    )
+
+    prestamo.estado = 'Cancelado'
+    prestamo.save()
+
+    prestamo.herramienta.disponible = True
+    prestamo.herramienta.save()
+
+    messages.success(request, 'Préstamo cancelado correctamente')
+    return redirect('mis_prestamos')
+
+
+@login_required
+@user_passes_test(es_encargado)
+def todos_prestamos(request):
+    prestamos = Prestamo.objects.all().order_by('-fecha_solicitud')
+
+    return render(request, 'todos_prestamos.html', {
+        'prestamos': prestamos
+    })
+
+
+@login_required
+@user_passes_test(es_encargado)
+@require_POST
+def activar_prestamo(request, id):
+    prestamo = get_object_or_404(Prestamo, id=id, estado='Pendiente')
+    prestamo.estado = 'Activo'
+    prestamo.save()
+
+    messages.success(request, 'Préstamo activado correctamente')
+    return redirect('todos_prestamos')
+
+
+@login_required
+@user_passes_test(es_encargado)
+@require_POST
+def devolver_prestamo(request, id):
+    prestamo = get_object_or_404(Prestamo, id=id, estado='Activo')
+
+    prestamo.estado = 'Devuelto'
+    prestamo.fecha_devolucion_real = timezone.localdate()
+    prestamo.save()
+
+    prestamo.herramienta.disponible = True
+    prestamo.herramienta.save()
+
+    messages.success(request, 'Devolución registrada correctamente')
+    return redirect('todos_prestamos')

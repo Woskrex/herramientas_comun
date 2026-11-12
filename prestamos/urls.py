@@ -22,4 +22,8 @@ urlpatterns = [
     path('solicitud/quitar/<int:id>/', views.quitar_solicitud, name='quitar_solicitud'),
     path('solicitud/confirmar/', views.confirmar_solicitud, name='confirmar_solicitud'),
     path('mis-prestamos/', views.mis_prestamos, name='mis_prestamos'),
+    path('prestamos/<int:id>/cancelar/', views.cancelar_prestamo, name='cancelar_prestamo'),
+    path('prestamos/todos/', views.todos_prestamos, name='todos_prestamos'),
+    path('prestamos/<int:id>/activar/', views.activar_prestamo, name='activar_prestamo'),
+    path('prestamos/<int:id>/devolver/', views.devolver_prestamo, name='devolver_prestamo'),
 ]
